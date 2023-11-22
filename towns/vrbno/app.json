@@ -1,0 +1,67 @@
+{
+  "expo": {
+    "name": "Vrbno v mobilu",
+    "slug": "mmvm_vrbno",
+    "description": "Oficiální aplikace města Vrbno pod Pradědem",
+    "owner": "as4u_cz",
+    "version": "19",
+    "orientation": "portrait",
+    "primaryColor": "#083061",
+    "icon": "./app/assets/images/icon-no-alpha.png",
+    "scheme": "myapp",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./app/assets/images/splash.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#083061"
+    },
+    "updates": {
+      "enabled": true,
+      "checkAutomatically": "ON_LOAD",
+      "fallbackToCacheTimeout": 60000
+    },
+    "assetBundlePatterns": ["**/*"],
+    "notification": {
+      "icon": "./app/assets/images/icon-notification.png",
+      "color": "#083061"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "cz.as4u.mmvm.vrbno",
+      "buildNumber": "6",
+      "infoPlist": {
+        "NSCameraUsageDescription": "Aplikace vyžaduje přístup ke kameře, abyste mohli přidat fotografii k vašemu hlášení.",
+        "NSPhotoLibraryUsageDescription": "Aplikace vyžaduje přístup ke kameře, abyste mohli přidat fotografii k vašemu hlášení.",
+        "NSLocationAlwaysUsageDescription": "Aplikace vyžaduje přístup k Vaší poloze. Je potřeba k navigaci na mapě a GPS u Vašich požadavků.",
+        "NSLocationUsageDescription": "Aplikace vyžaduje přístup k Vaší poloze. Je potřeba k navigaci na mapě a GPS u Vašich požadavků.",
+        "NSLocationWhenInUseUsageDescription": "Aplikace vyžaduje přístup k Vaší poloze. Je potřeba k navigaci na mapě a GPS u Vašich požadavků."
+      },
+      "config": {
+        "googleMapsApiKey": "AIzaSyAI_gd1-UxX-PcsHkBvszydzP4YTyjtwv0"
+      }
+    },
+    "androidStatusBar": {
+      "barStyle": "light-content",
+      "backgroundColor": "#083061",
+      "translucent": false
+    },
+    "android": {
+      "package": "cz.as4u.mmvm.vrbno",
+      "versionCode": 7,
+      "adaptiveIcon": {
+        "foregroundImage": "./app/assets/images/icon-adaptive.png",
+        "backgroundColor": "#083061"
+      },
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyB8EsuL5CKW4j9nByUovNkz_IpfKJ49DZg"
+        }
+      }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "b6b061c9-19e1-47c1-b055-cf33035cc6fc"
+      }
+    }
+  }
+}

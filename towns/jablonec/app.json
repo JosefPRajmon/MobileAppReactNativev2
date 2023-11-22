@@ -1,0 +1,68 @@
+{
+  "expo": {
+    "name": "Jablonec v mobilu",
+    "slug": "MMVM_Expo",
+    "description": "Oficiální aplikace města Jablonec nad Nisou",
+    "owner": "miccy161",
+    "version": "4.7.17",
+    "orientation": "portrait",
+    "primaryColor": "#118441",
+    "icon": "./app/assets/images/icon-no-alpha.png",
+    "scheme": "myapp",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./app/assets/images/splash.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#118441"
+    },
+    "updates": {
+      "enabled": true,
+      "checkAutomatically": "ON_ERROR_RECOVERY",
+      "fallbackToCacheTimeout": 60000
+    },
+    "assetBundlePatterns": ["**/*"],
+    "notification": {
+      "icon": "./app/assets/images/icon-notification.png",
+      "color": "#118441"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "cz.as4u.mmvm.jablonec",
+      "buildNumber": "8",
+      "infoPlist": {
+        "NSCameraUsageDescription": "Aplikace vyžaduje přístup ke kameře, abyste mohli přidat fotografii k vašemu hlášení.",
+        "NSPhotoLibraryUsageDescription": "Aplikace vyžaduje přístup ke kameře, abyste mohli přidat fotografii k vašemu hlášení.",
+        "NSLocationAlwaysUsageDescription": "Aplikace vyžaduje přístup k Vaší poloze. Je potřeba k navigaci na mapě a GPS u Vašich požadavků.",
+        "NSLocationUsageDescription": "Aplikace vyžaduje přístup k Vaší poloze. Je potřeba k navigaci na mapě a GPS u Vašich požadavků.",
+        "NSLocationWhenInUseUsageDescription": "Aplikace vyžaduje přístup k Vaší poloze. Je potřeba k navigaci na mapě a GPS u Vašich požadavků.",
+        "NSUserTrackingUsageDescription": "Povolit aplikaci přístup k webovým stránkám, které mohou používat cookies."
+      }
+    },
+    "androidStatusBar": {
+      "barStyle": "light-content",
+      "backgroundColor": "#118441",
+      "translucent": false
+    },
+    "android": {
+      "package": "cz.as4u.mmvm.jablonec",
+      "versionCode": 8,
+      "adaptiveIcon": {
+        "foregroundImage": "./app/assets/images/icon-adaptive.png",
+        "backgroundColor": "#ffffff"
+      },
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyCfoqahxGbVGKH94gajmRFZWM1FZeE6zn4"
+        }
+      }
+    },
+    "plugins": [
+      [
+        "expo-tracking-transparency",
+        {
+          "userTrackingPermission": "Povolit aplikaci přístup k webovým stránkám, které mohou používat cookies."
+        }
+      ]
+    ]
+  }
+}

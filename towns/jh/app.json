@@ -1,0 +1,69 @@
+{
+  "expo": {
+    "name": "Jindřichův Hradec v mobilu",
+    "slug": "mmvm_jh",
+    "description": "Oficiální aplikace města Jindřichův Hradec",
+    "owner": "as4u_cz",
+    "version": "19",
+    "orientation": "portrait",
+    "primaryColor": "#0079cc",
+    "icon": "./app/assets/images/icon-no-alpha.png",
+    "scheme": "myapp",
+    "userInterfaceStyle": "light",
+    "jsEngine": "hermes",
+    "splash": {
+      "image": "./app/assets/images/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "enabled": false,
+      "checkAutomatically": "ON_LOAD",
+      "fallbackToCacheTimeout": 60000
+    },
+    "assetBundlePatterns": ["**/*"],
+    "notification": {
+      "icon": "./app/assets/images/icon-notification.png",
+      "color": "#0079cc"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "cz.as4u.mmvm.jh",
+      "buildNumber": "3",
+      "infoPlist": {
+        "NSCameraUsageDescription": "Aplikace vyžaduje přístup ke kameře, abyste mohli přidat fotografii k vašemu hlášení.",
+        "NSPhotoLibraryUsageDescription": "Aplikace vyžaduje přístup ke kameře, abyste mohli přidat fotografii k vašemu hlášení.",
+        "NSLocationAlwaysUsageDescription": "Aplikace vyžaduje přístup k Vaší poloze. Je potřeba k navigaci na mapě a GPS u Vašich požadavků.",
+        "NSLocationUsageDescription": "Aplikace vyžaduje přístup k Vaší poloze. Je potřeba k navigaci na mapě a GPS u Vašich požadavků.",
+        "NSLocationWhenInUseUsageDescription": "Aplikace vyžaduje přístup k Vaší poloze. Je potřeba k navigaci na mapě a GPS u Vašich požadavků."
+      },
+      "config": {
+        "googleMapsApiKey": "AIzaSyAI_gd1-UxX-PcsHkBvszydzP4YTyjtwv0"
+      }
+    },
+    "androidStatusBar": {
+      "barStyle": "light-content",
+      "backgroundColor": "#0079cc",
+      "translucent": false
+    },
+    "android": {
+      "package": "cz.as4u.mmvm.jh",
+      "versionCode": 46,
+      "adaptiveIcon": {
+        "foregroundImage": "./app/assets/images/icon-adaptive.png",
+        "backgroundColor": "#0079cc"
+      },
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyB8EsuL5CKW4j9nByUovNkz_IpfKJ49DZg"
+        }
+      }
+    },
+    "plugins": ["expo-build-properties", "expo-localization"],
+    "extra": {
+      "eas": {
+        "projectId": "a7a174b6-bcaf-4025-a9c4-ed59ddc6e2c5"
+      }
+    }
+  }
+}

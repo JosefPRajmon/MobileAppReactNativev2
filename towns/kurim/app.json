@@ -1,0 +1,77 @@
+{
+  "expo": {
+    "name": "Kuřim v mobilu",
+    "slug": "mmvm_kurim",
+    "description": "Oficiální aplikace města Kuřim",
+    "owner": "miccy161",
+    "version": "4.15",
+    "orientation": "portrait",
+    "primaryColor": "#7B7C7E",
+    "icon": "./app/assets/images/icon-no-alpha.png",
+    "scheme": "myapp",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./app/assets/images/splash.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "enabled": false,
+      "checkAutomatically": "ON_LOAD",
+      "fallbackToCacheTimeout": 60000,
+      "url": "https://u.expo.dev/0ed1b6c5-9f9c-4259-9ecc-537fc9081db2"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "notification": {
+      "icon": "./app/assets/images/icon-notification.png",
+      "color": "#7B7C7E"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "cz.as4u.mmvm.kurim",
+      "buildNumber": "3",
+      "infoPlist": {
+        "NSCameraUsageDescription": "Aplikace vyžaduje přístup ke kameře, abyste mohli přidat fotografii k vašemu hlášení.",
+        "NSPhotoLibraryUsageDescription": "Aplikace vyžaduje přístup ke kameře, abyste mohli přidat fotografii k vašemu hlášení.",
+        "NSLocationAlwaysUsageDescription": "Aplikace vyžaduje přístup k Vaší poloze. Je potřeba k navigaci na mapě a GPS u Vašich požadavků.",
+        "NSLocationUsageDescription": "Aplikace vyžaduje přístup k Vaší poloze. Je potřeba k navigaci na mapě a GPS u Vašich požadavků.",
+        "NSLocationWhenInUseUsageDescription": "Aplikace vyžaduje přístup k Vaší poloze. Je potřeba k navigaci na mapě a GPS u Vašich požadavků.",
+        "NSUserTrackingUsageDescription": "Povolit aplikaci přístup k webovým stránkám, které mohou používat cookies."
+      },
+      "config": {
+        "googleMapsApiKey": "AIzaSyAI_gd1-UxX-PcsHkBvszydzP4YTyjtwv0"
+      }
+    },
+    "androidStatusBar": {
+      "barStyle": "light-content",
+      "backgroundColor": "#7B7C7E",
+      "translucent": false
+    },
+    "android": {
+      "package": "cz.as4u.mmvm.kurim",
+      "versionCode": 10,
+      "adaptiveIcon": {
+        "foregroundImage": "./app/assets/images/icon-adaptive.png",
+        "backgroundColor": "#7B7C7E"
+      },
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyB8EsuL5CKW4j9nByUovNkz_IpfKJ49DZg"
+        }
+      }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "0ed1b6c5-9f9c-4259-9ecc-537fc9081db2"
+      }
+    },
+    "plugins": [
+      [
+        "expo-tracking-transparency",
+        {
+          "userTrackingPermission": "Povolit aplikaci přístup k webovým stránkám, které mohou používat cookies."
+        }
+      ]
+    ]
+  }
+}

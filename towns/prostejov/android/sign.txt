@@ -1,0 +1,6 @@
+package: cz.as4u.mmvm.prostejov
+pass: Pr0st3j0vH3sl0/
+alias: mmvm-prostejov-release
+alias_pass: Pr0st3j0vH3sl0/
+path_keystore: /Users/Miccy/_dev/As4u/MMVM_Expo/towns/prostejov/android/prostejov_release.keystore
+gp_upload_private_key: prostejov_encrypted_private_key
