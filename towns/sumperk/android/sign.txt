@@ -1,0 +1,6 @@
+package: cz.as4u.mmvm.sumperk
+pass: Sump3rkK3y/
+alias: Release
+alias_pass: Sump3rkK3y/
+path: /Users/Miccy/_dev_local/As4u/MMVM/towns/sumperk/android/sumperk_release.keystore
+gp_upload_private_key: sumperk_encrypted_private_key

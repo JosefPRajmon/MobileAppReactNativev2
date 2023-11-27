@@ -1,0 +1,68 @@
+{
+  "expo": {
+    "name": "Prostějov v mobilu",
+    "slug": "mmvm_prostejov",
+    "description": "Oficiální aplikace města Prostějov",
+    "owner": "miccy161",
+    "version": "4.16",
+    "orientation": "portrait",
+    "primaryColor": "#1c71c2",
+    "icon": "./app/assets/images/icon-no-alpha.png",
+    "scheme": "myapp",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./app/assets/images/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "enabled": true,
+      "checkAutomatically": "ON_ERROR_RECOVERY",
+      "fallbackToCacheTimeout": 60000
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "notification": {
+      "icon": "./app/assets/images/icon-notification.png",
+      "color": "#1c71c2"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "cz.as4u.mmvm.prostejov",
+      "buildNumber": "12",
+      "infoPlist": {
+        "NSCameraUsageDescription": "Aplikace vyžaduje přístup ke kameře, abyste mohli přidat fotografii k vašemu hlášení.",
+        "NSPhotoLibraryUsageDescription": "Aplikace vyžaduje přístup ke kameře, abyste mohli přidat fotografii k vašemu hlášení.",
+        "NSLocationAlwaysUsageDescription": "Aplikace vyžaduje přístup k Vaší poloze. Je potřeba k navigaci na mapě a GPS u Vašich požadavků.",
+        "NSLocationUsageDescription": "Aplikace vyžaduje přístup k Vaší poloze. Je potřeba k navigaci na mapě a GPS u Vašich požadavků.",
+        "NSLocationWhenInUseUsageDescription": "Aplikace vyžaduje přístup k Vaší poloze. Je potřeba k navigaci na mapě a GPS u Vašich požadavků."
+      },
+      "config": {
+        "googleMapsApiKey": "AIzaSyAI_gd1-UxX-PcsHkBvszydzP4YTyjtwv0"
+      }
+    },
+    "androidStatusBar": {
+      "barStyle": "light-content",
+      "backgroundColor": "#1c71c2"
+    },
+    "android": {
+      "package": "cz.as4u.mmvm.prostejov",
+      "versionCode": 8,
+      "adaptiveIcon": {
+        "foregroundImage": "./app/assets/images/icon-adaptive.png",
+        "backgroundColor": "#ffffff"
+      },
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyB8EsuL5CKW4j9nByUovNkz_IpfKJ49DZg"
+        }
+      }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "c9a19694-c388-42f0-8395-25d7e90592b6"
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 15.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Vrstva_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="23px" height="32.316px" viewBox="6.937 1.878 23 32.316" enable-background="new 6.937 1.878 23 32.316"
+	 xml:space="preserve">
+<g>
+	<g>
+		<circle fill="#ED1E79" cx="18.438" cy="13.379" r="11.5"/>
+		<g>
+			<g>
+				<path fill="#FFFFFF" d="M16.777,17.413c0.348,0.962-0.446,2.13-1.771,2.607c-1.321,0.479-2.679,0.086-3.025-0.879
+					c-0.348-0.963,0.442-2.129,1.767-2.606C15.074,16.056,16.429,16.449,16.777,17.413z"/>
+				<polygon fill="#FFFFFF" points="15.393,9.137 15.393,17.867 16.851,17.867 16.851,8.831 				"/>
+			</g>
+			<g>
+				<polygon fill="#FFFFFF" points="22.688,7.614 22.688,16.409 24.146,16.409 24.146,7.308 				"/>
+				
+					<ellipse transform="matrix(-0.3394 -0.9406 0.9406 -0.3394 13.2093 42.913)" fill="#FFFFFF" cx="21.673" cy="16.818" rx="1.854" ry="2.549"/>
+			</g>
+			<polygon fill="#FFFFFF" points="16.851,9.925 16.851,11.415 22.688,10.197 22.688,8.708 			"/>
+			<polygon fill="#FFFFFF" points="15.393,7.678 15.393,9.166 24.146,7.34 24.146,5.849 			"/>
+		</g>
+	</g>
+	<polygon fill="#ED1E79" points="11.434,21.649 18.677,34.194 25.919,21.649 	"/>
+</g>
+</svg>

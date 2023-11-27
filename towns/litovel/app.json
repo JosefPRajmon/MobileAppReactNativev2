@@ -1,0 +1,59 @@
+{
+  "expo": {
+    "name": "Litovel v mobilu",
+    "slug": "mmvm_litovel",
+    "description": "Oficiální aplikace města Litovel",
+    "owner": "miccy161",
+    "version": "4.12.19",
+    "orientation": "portrait",
+    "primaryColor": "#156da8",
+    "icon": "./app/assets/images/icon-no-alpha.png",
+    "scheme": "myapp",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./app/assets/images/splash.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#156da8"
+    },
+    "updates": {
+      "enabled": true,
+      "checkAutomatically": "ON_LOAD",
+      "fallbackToCacheTimeout": 60000
+    },
+    "assetBundlePatterns": ["**/*"],
+    "notification": {
+      "icon": "./app/assets/images/icon-notification.png",
+      "color": "#156da8"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "cz.as4u.mmvm.litovel",
+      "buildNumber": "5",
+      "infoPlist": {
+        "NSCameraUsageDescription": "Aplikace vyžaduje přístup ke kameře, abyste mohli přidat fotografii k vašemu hlášení.",
+        "NSPhotoLibraryUsageDescription": "Aplikace vyžaduje přístup ke kameře, abyste mohli přidat fotografii k vašemu hlášení.",
+        "NSLocationAlwaysUsageDescription": "Aplikace vyžaduje přístup k Vaší poloze. Je potřeba k navigaci na mapě a GPS u Vašich požadavků.",
+        "NSLocationUsageDescription": "Aplikace vyžaduje přístup k Vaší poloze. Je potřeba k navigaci na mapě a GPS u Vašich požadavků.",
+        "NSLocationWhenInUseUsageDescription": "Aplikace vyžaduje přístup k Vaší poloze. Je potřeba k navigaci na mapě a GPS u Vašich požadavků."
+      }
+    },
+    "androidStatusBar": {
+      "barStyle": "light-content",
+      "backgroundColor": "#156da8",
+      "translucent": false
+    },
+    "android": {
+      "package": "cz.as4u.mmvm.litovel",
+      "versionCode": 7,
+      "adaptiveIcon": {
+        "foregroundImage": "./app/assets/images/icon-adaptive.png",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "f25d0eda-10b4-4298-9413-34ed5f8cfa9a"
+      }
+    }
+  }
+}

@@ -1,0 +1,6 @@
+package: cz.as4u.mmvm.jablonec
+pass: Jabl0n3cApp*
+alias: Release
+alias_pass:  Jabl0n3cK3y*Rel
+path: /Users/miccy/_dev_local/As4u/cz.as4u.mmvm.expo/towns/jablonec/android/jablonec-release.keystore
+gp_upload_private_key: jablonec_encrypted_private_key

@@ -1,0 +1,562 @@
+import React, { useEffect, useState } from "react";
+import {
+  StyleSheet,
+  Platform,
+  TouchableOpacity,
+  KeyboardAvoidingView,
+  Image,
+  Dimensions
+} from "react-native";
+import * as ImagePicker from "expo-image-picker";
+import * as Location from "expo-location";
+import * as ImageManipulator from "expo-image-manipulator";
+import * as _ from "lodash";
+import { View, Text, Button, Toast } from "native-base";
+import { AppStyles, Colors, Metrics } from "../themes";
+import { ScrollView } from "react-native-gesture-handler";
+import DetailItem from "../components/detail/DetailItem";
+import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
+import { useForm, Controller } from "react-hook-form";
+import { MainButton } from "../components/MainButton";
+import FormInput from "../components/form/FormInput";
+import { PICK_LOCATION_MODAL } from "../navigation/ScreenNames";
+import { FlatGrid } from "react-native-super-grid";
+import cuid from "cuid";
+import { useDispatch } from "react-redux";
+import { GuardConfig } from "../config/modules/Guard.config";
+import { sendReport } from "../providers/BackendProvider";
+import { LoaderModal } from "../modals/LoaderModal";
+import { translate } from "../services/translate.service";
+
+export default function GuardScreen({ navigation }: any) {
+  const dispatch = useDispatch();
+  const locationChoices: any = [
+    {
+      label: "Žádná lokace",
+      value: "noLocation",
+      icon: "crosshairs-off"
+    },
+    {
+      label: "Vaše aktuální lokace",
+      value: "actualLocation",
+      icon: "crosshairs-gps"
+    },
+    {
+      label: "Lokace zvolená na mapě",
+      value: "customLocation",
+      icon: "crosshairs"
+    }
+  ];
+  const photoOptions: any = {
+    mediaType: ImagePicker.MediaTypeOptions.Images,
+    allowsEditing: false,
+    aspect: [4, 3],
+    quality: 1,
+    base64: false
+  };
+  const EMAIL_REGEX =
+    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  const PHONE_REGEX = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/;
+  const [locationChoice, setLocationChoice] = useState(locationChoices[0]);
+  const [location, setLocation]: any = useState(false);
+  const [uploading, setUploading]: any = useState(false);
+  const [images, setImages] = useState<any>([]);
+  const {
+    handleSubmit,
+    control,
+    setValue,
+    formState: { errors, isValid }
+  }: any = useForm({ mode: "onBlur" });
+  const [cardWidth, setCardWidth] = useState<number>(
+    Math.floor(Metrics.screenDims.width / 2 - Metrics.padding.normal * 2)
+  );
+
+  useEffect(() => {
+    (async () => {
+      if (Platform.OS !== "web") {
+        const galleryPermissions =
+          await ImagePicker.requestMediaLibraryPermissionsAsync();
+
+        if (galleryPermissions.status !== "granted") {
+          alert("Musíte povolit aplikaci použití kamery v nastavení.");
+        }
+
+        const cameraPermissions =
+          await ImagePicker.requestCameraPermissionsAsync();
+
+        if (cameraPermissions.status !== "granted") {
+          alert("Musíte povolit přístup do galerie v nastavení.");
+        }
+      }
+    })();
+  }, []);
+
+  useEffect(() => {
+    (async () => {
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== "granted") {
+        alert("Potřebujeme vaší polohu k zacílení hlášení!");
+        return;
+      }
+
+      let gps: any = await Location.getCurrentPositionAsync({});
+      if (gps) {
+        setLocation(gps);
+        setLocationChoice(locationChoices[1]);
+      }
+    })();
+  }, []);
+
+  const onLayout = (e: any) => {
+    const dim = Math.floor(
+      Metrics.screenDims.width / 2 - Metrics.padding.normal * 2
+    );
+    setCardWidth(dim);
+  };
+
+  const handleOpenPickLocationModal = () => {
+    navigation.navigate(PICK_LOCATION_MODAL, {
+      onPickLocation: (gps: any) => {
+        if (gps) {
+          setLocation(gps);
+          setLocationChoice(locationChoices[2]);
+        } else if (location) {
+          setLocation(location);
+          setLocationChoice(locationChoices[1]);
+        } else {
+          setLocation(false);
+          setLocationChoice(locationChoices[0]);
+        }
+      }
+    });
+  };
+
+  const handleCapturePhoto = async () => {
+    try {
+      const result: any = await ImagePicker.launchCameraAsync(photoOptions);
+
+      if (!result.canceled && result.uri) {
+        addImage(result);
+      } else {
+        alert("Fotografii se nepodařilo načíst.");
+      }
+    } catch (e) {
+      console.log("uiTakePhoto failed! Err: ", e);
+      alert("Fotografii se nepodařilo načíst.");
+    }
+  };
+
+  const handleChoosePhoto = async () => {
+    try {
+      const result: any = await ImagePicker.launchImageLibraryAsync(
+        photoOptions
+      );
+
+      if (!result.canceled && result.uri) {
+        addImage(result);
+      } else {
+        alert("Fotografii se nepodařilo načíst.");
+      }
+    } catch (e) {
+      console.log("uiTakePhoto failed! Err: ", e);
+      alert("Fotografii se nepodařilo načíst.");
+    }
+  };
+
+  const addImage = async (image: any, maxWidth = 720, maxHeight = 720) => {
+    try {
+      const MAX_WIDTH = maxWidth;
+      const MAX_HEIGHT = maxHeight;
+      let width = image.width;
+      let height = image.height;
+
+      if (width > height) {
+        if (width > MAX_WIDTH) {
+          height *= MAX_WIDTH / width;
+          width = MAX_WIDTH;
+        }
+      } else {
+        if (height > MAX_HEIGHT) {
+          width *= MAX_HEIGHT / height;
+          height = MAX_HEIGHT;
+        }
+      }
+
+      const manipResult = await ImageManipulator.manipulateAsync(
+        image.uri,
+        [{ resize: { width: width, height: height } }],
+        {
+          compress: 0.6,
+          base64: true,
+          format: ImageManipulator.SaveFormat.JPEG
+        }
+      );
+
+      setImages((images: any) => [...images, manipResult.base64]);
+    } catch (error) {
+      console.log("Resize and add photo failed! Err: ", error);
+    }
+  };
+
+  const onSubmit = async (data: any) => {
+    setUploading(true);
+
+    const dataToSend: any = {
+      image: images,
+      nazev: data.title,
+      text: data.description,
+      email: data.email,
+      telefon: data.tel,
+      lat: location.coords.latitude,
+      lng: location.coords.longitude
+    };
+    const success: any = await dispatch(
+      await sendReport(GuardConfig.reportUrl, dataToSend)
+    );
+
+    if (success) {
+      setValue("title", "");
+      setValue("description", "");
+      setValue("email", "");
+      setValue("tel", "");
+      setImages([]);
+
+      Toast.show({
+        text: "Hlášení se úspěšně odesláno!",
+        type: "success",
+        buttonText: "Ok",
+        textStyle: AppStyles.toastTextStyle,
+        duration: 3000
+      });
+    } else {
+      Toast.show({
+        text: "Hlášení se nepodařilo odeslat!",
+        type: "danger",
+        buttonText: "Ok",
+        textStyle: AppStyles.toastTextStyle,
+        duration: 3000
+      });
+    }
+    setUploading(false);
+  };
+
+  const removeImage = (index: number) => {
+    setImages((images: any) =>
+      images.filter((img: any, i: number) => i !== index)
+    );
+  };
+
+  const renderImage = ({ item, index }: any) => {
+    const height = Math.floor((cardWidth / 4) * 3);
+
+    return (
+      <TouchableOpacity onPress={() => removeImage(index)} activeOpacity={0.7}>
+        <View style={[styles.itemContainer, { width: cardWidth }]}>
+          <Image
+            source={{ uri: `data:image/jpeg;base64,${item}` }}
+            style={[styles.photo, { width: "100%", height: height }]}
+          />
+        </View>
+      </TouchableOpacity>
+    );
+  };
+
+  return (
+    <KeyboardAvoidingView
+      behavior={Platform.OS == "ios" ? "padding" : null}
+      scrollEnabled={false}
+      resetScrollToCoords={{ x: 0, y: 0 }}
+      enabled
+      style={styles.keyboard}
+    >
+      <LoaderModal
+        loading={uploading}
+        text={translate.get("text-uploading-report")}
+      />
+      <ScrollView scrollIndicatorInsets={{ right: 1 }} nestedScrollEnabled>
+        <View style={styles.container}>
+          <Text style={AppStyles.detailTitle}>Zadání nového hlášení</Text>
+          <View style={styles.descriptionContainer}>
+            <Text style={[styles.text, styles.warnText]}>
+              Pozor neslouží ke krizové komunikaci!
+            </Text>
+            <Text style={styles.text}>
+              Vyplňte požadované údaje a hlášení odešlete. Hlášení se odešle
+              dozorčímu městské policie, který zajistí jeho další zpracování dle
+              povahy odeslaného hlášení.
+            </Text>
+          </View>
+          <DetailItem
+            title={"Fotografie"}
+            data="Vyberte alespoň jednu, ale maximálně pět fotografií souvisejících s Vaším hlášením."
+          />
+          {images.length <= 5 && (
+            <View style={styles.buttonsContainer}>
+              <Button
+                style={[styles.button, { marginRight: Metrics.margin.tinny }]}
+                onPress={handleCapturePhoto}
+              >
+                <Text style={styles.buttonTitle}>Vyfotit</Text>
+              </Button>
+              <Button
+                style={[styles.button, { marginLeft: Metrics.margin.tinny }]}
+                onPress={handleChoosePhoto}
+              >
+                <Text style={styles.buttonTitle}>Z galerie</Text>
+              </Button>
+            </View>
+          )}
+          {images.length > 0 && (
+            <View onLayout={onLayout} style={styles.gridContainer}>
+              <FlatGrid
+                keyExtractor={() => cuid()}
+                scrollIndicatorInsets={{ right: 1 }}
+                itemDimension={cardWidth}
+                data={images}
+                style={styles.gridView}
+                renderItem={renderImage}
+              />
+            </View>
+          )}
+          <DetailItem
+            title={"Lokace požadavku"}
+            data="Bude použita Vaše současná lokace zařízení, pokud není mimo vymezenou oblast nebo můžete požadovanou lokaci najít na mapě. Zadejte ji co nejpřesněji."
+          />
+          <TouchableOpacity
+            activeOpacity={0.7}
+            style={[
+              styles.locationPickerButton,
+              location && { borderColor: "green" }
+            ]}
+            onPress={handleOpenPickLocationModal}
+          >
+            <View style={styles.locationPickerTextContainer}>
+              <Text style={styles.locationPickerText}>
+                {locationChoice.label}
+              </Text>
+            </View>
+            <View style={styles.locationPickerIconContainer}>
+              <Icon
+                style={styles.locationPickerIcon}
+                size={Metrics.icon.normal}
+                name={locationChoice.icon}
+                color={Colors.listItemIcon}
+              />
+            </View>
+          </TouchableOpacity>
+          <DetailItem
+            title={"Hlášení"}
+            data="Vyplňte název a popis Vašeho hlášení. Zpětné kontakty (email a telefon) nejsou povinné."
+          />
+          <Controller
+            name="title"
+            defaultValue=""
+            control={control}
+            rules={{
+              required: { value: true, message: "Název je vyžadován" }
+            }}
+            render={({ field: { onChange, value, onBlur } }) => (
+              <FormInput
+                value={value}
+                placeholder="Název hlášení"
+                keyboardType="default"
+                onChangeText={(text: string) => onChange(text)}
+                onBlur={onBlur}
+                error={errors?.title}
+                errorText={errors?.title?.message}
+              />
+            )}
+          />
+          <Controller
+            name="description"
+            defaultValue=""
+            control={control}
+            render={({ field: { onChange, value, onBlur } }) => (
+              <FormInput
+                value={value}
+                placeholder="Popis hlášení"
+                keyboardType="default"
+                onChangeText={(text: string) => onChange(text)}
+                onBlur={onBlur}
+                error={errors?.description}
+                errorText={errors?.description?.message}
+                multiline={true}
+              />
+            )}
+          />
+          <Controller
+            name="email"
+            defaultValue=""
+            control={control}
+            rules={{
+              pattern: {
+                value: EMAIL_REGEX,
+                message: "Špatný formát emailu"
+              }
+            }}
+            render={({ field: { onChange, value, onBlur } }) => (
+              <FormInput
+                value={value}
+                placeholder="Email"
+                keyboardType="email-address"
+                onChangeText={(text: string) => onChange(text.trim())}
+                onBlur={onBlur}
+                error={errors?.email}
+                errorText={errors?.email?.message}
+              />
+            )}
+          />
+          <Controller
+            name="tel"
+            defaultValue=""
+            control={control}
+            rules={{
+              minLength: {
+                value: 9,
+                message: "Příliš krátké"
+              },
+              maxLength: {
+                value: 16,
+                message: "Příliš dlouhé"
+              },
+              pattern: {
+                value: PHONE_REGEX,
+                message: "Špatný formát telefonu"
+              }
+            }}
+            render={({ field: { onChange, value, onBlur } }) => (
+              <FormInput
+                value={value}
+                placeholder="Telefon"
+                keyboardType="phone-pad"
+                onChangeText={(text: string) => onChange(text.trim())}
+                onBlur={onBlur}
+                error={errors?.tel}
+                errorText={errors?.tel?.message}
+              />
+            )}
+          />
+          <MainButton
+            text={"Odeslat hlášení"}
+            iconType="MaterialCommunityIcons"
+            iconName="send"
+            containerStyle={{ paddingTop: 0 }}
+            disabled={!location || !images.length || uploading}
+            onButtonPress={handleSubmit(onSubmit)}
+          />
+        </View>
+      </ScrollView>
+    </KeyboardAvoidingView>
+  );
+}
+
+const styles = StyleSheet.create({
+  keyboard: {
+    flex: 1
+  },
+  container: {
+    flex: 1,
+    width: "100%",
+    flexDirection: "column",
+    alignItems: "flex-start",
+    justifyContent: "flex-start",
+    padding: Metrics.padding.normal,
+    backgroundColor: Colors.appBackround,
+    paddingBottom: Metrics.padding.big
+  },
+  descriptionContainer: {
+    marginTop: Metrics.padding.small
+  },
+  text: {
+    fontSize: Metrics.font.text,
+    color: Colors.text.defaultText
+  },
+  warnText: {
+    color: Colors.text.listItemTitle,
+    fontWeight: "bold",
+    marginVertical: Metrics.margin.small
+  },
+  buttonsContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    paddingTop: Metrics.padding.normal
+  },
+  button: {
+    flex: 1,
+    justifyContent: "center",
+    backgroundColor: Colors.mainButton.background,
+    padding: Metrics.padding.tinny
+  },
+  buttonTitle: {
+    color: Colors.mainButton.text,
+    fontSize: Metrics.font.title
+  },
+  locationPickerButton: {
+    flexDirection: "row",
+    alignContent: "space-between",
+    textAlign: "center",
+    padding: Metrics.padding.small,
+    borderWidth: 0.5,
+    borderColor: Colors.listItemSeparator,
+    marginTop: Metrics.padding.small,
+    borderRadius: Metrics.radius.small
+  },
+  locationPickerTextContainer: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    alignContent: "center",
+    color: Colors.text.defaultText
+  },
+  locationPickerText: {
+    flex: 1,
+    alignSelf: "center",
+    fontSize: Metrics.font.text,
+    fontWeight: "bold",
+    color: Colors.text.defaultText
+  },
+  locationPickerIconContainer: {
+    flexDirection: "column",
+    alignContent: "center",
+    justifyContent: "center"
+  },
+  locationPickerIcon: {
+    paddingLeft: Metrics.padding.small
+  },
+  // Form
+  formItem: {
+    borderRadius: Metrics.radius.small,
+    marginVertical: Metrics.margin.normal,
+    height: 36
+  },
+  inputContainer: {
+    width: "100%"
+  },
+  formInput: {
+    fontSize: Metrics.font.text
+  },
+  errorText: {
+    color: "red"
+  },
+  gridContainer: {
+    flex: 1,
+    width: "100%",
+    paddingHorizontal: 0,
+    backgroundColor: Colors.appBackround,
+    paddingBottom: 0,
+    marginTop: Metrics.margin.normal
+  },
+  gridView: {},
+  itemContainer: {
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: Metrics.radius.small
+  },
+  photo: {
+    flex: 1,
+    resizeMode: "cover",
+    borderRadius: Metrics.radius.small
+  }
+});
