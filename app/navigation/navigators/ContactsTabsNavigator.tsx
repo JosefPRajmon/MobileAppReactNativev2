@@ -107,7 +107,7 @@ function DepartmentsNavigator() {
         component={ContactsDepartmentsTabScreen}
         options={{
           ...GlobalNavigationOptions,
-          headerLeft: () => <HeaderNavButton type="menu" />,
+          //headerLeft: () => <HeaderNavButton type="menu" />,
           headerTitle: translate.get(ContactsConfig.title)
         }}
       />
