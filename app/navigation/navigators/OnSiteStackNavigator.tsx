@@ -20,7 +20,7 @@ export default function OnSiteStackNavigator() {
                 component={OnSiteListScreen}
                 options={{
                     ...GlobalNavigationOptions,
-                    headerLeft: () => (<HeaderNavButton type="menu" />),
+                    //headerLeft: () => (<HeaderNavButton type="menu" />),
                     headerTitle: translate.get(OnSiteConfig.title),
                     /*headerRight: () => (
                         <View style={appStyles.headerRightContainer} >

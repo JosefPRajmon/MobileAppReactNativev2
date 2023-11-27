@@ -18,7 +18,7 @@ export default function ReportsStackNavigator() {
         component={ReportsScreen}
         options={{
           ...GlobalNavigationOptions,
-          headerLeft: () => <HeaderNavButton type='menu' />,
+          //headerLeft: () => <HeaderNavButton type='menu' />,
           headerTitle: translate.get(
             AppModules.reports.title || AppModules.reports.config.title
           )

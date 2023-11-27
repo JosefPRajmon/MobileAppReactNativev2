@@ -17,7 +17,7 @@ export default function TouristInfoStackNavigator() {
                 component={TouristInfoScreen}
                 options={{
                     ...GlobalNavigationOptions,
-                    headerLeft: () => (<HeaderNavButton type="menu" />),
+                    //headerLeft: () => (<HeaderNavButton type="menu" />),
                     headerTitle: translate.get(TouristInfoConfig.title)
                 }}
             />

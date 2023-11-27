@@ -17,7 +17,7 @@ export default function ReservationStackNavigator() {
         component={ReservationScreen}
         options={{
           ...GlobalNavigationOptions,
-          headerLeft: () => <HeaderNavButton type='menu' />,
+          //headerLeft: () => <HeaderNavButton type='menu' />,
           headerTitle: translate.get(
             AppModules.reservation.title || AppModules.reservation.config.title
           )

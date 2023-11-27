@@ -16,7 +16,7 @@ export default function HelplinesStackNavigator() {
         component={HelplinesListScreen}
         options={{
           ...GlobalNavigationOptions,
-          headerLeft: () => <HeaderNavButton type="menu" />,
+          //headerLeft: () => <HeaderNavButton type="menu" />,
           headerTitle: translate.get(HelplinesConfig.title)
         }}
       />

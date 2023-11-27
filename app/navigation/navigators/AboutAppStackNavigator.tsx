@@ -17,7 +17,7 @@ export default function AboutAppStackNavigator() {
         component={AboutAppScreen}
         options={{
           ...GlobalNavigationOptions,
-          headerLeft: () => <HeaderNavButton type='menu' />,
+          //headerLeft: () => <HeaderNavButton type='menu' />,
           headerTitle: translate.get(
             AppModules.aboutApp.title || AppModules.aboutApp.config.title
           )

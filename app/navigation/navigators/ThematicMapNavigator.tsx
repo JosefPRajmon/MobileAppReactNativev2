@@ -41,7 +41,7 @@ export default function ThematicMapNavigator({ navigation }: any) {
                 component={ThematicMapScreen}
                 options={{
                     ...GlobalNavigationOptions,
-                    headerLeft: () => (<HeaderNavButton type="menu" />),
+                    //headerLeft: () => (<HeaderNavButton type="menu" />),
                     headerTitle: translate.get(ThematicMapConfig.title),
                     headerRight: () => (
                         <View style={appStyles.headerRightContainer} >

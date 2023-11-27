@@ -35,7 +35,7 @@ export default function BoardStackNavigator({ navigation }: any) {
         component={BoardListScreen}
         options={{
           ...GlobalNavigationOptions,
-          headerLeft: () => <HeaderNavButton type='menu' />,
+          //headerLeft: () => <HeaderNavButton type='menu' />,
           headerTitle: translate.get(
             AppModules.board.title || AppModules.board.config.title
           ),

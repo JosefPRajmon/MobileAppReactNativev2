@@ -21,7 +21,7 @@ export default function SituationsStackNavigator() {
                 component={SituationsListScreen}
                 options={{
                     ...GlobalNavigationOptions,
-                    headerLeft: () => (<HeaderNavButton type="menu" />),
+                    //headerLeft: () => (<HeaderNavButton type="menu" />),
                     headerTitle: translate.get(SituationsConfig.title),
                     //headerRight: () => (<ItemsVisibilityButton moduleID={SituationsConfig.moduleID} />)
                 }}

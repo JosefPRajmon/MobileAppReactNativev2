@@ -22,7 +22,7 @@ export default function NoticesStackNavigator() {
         component={NoticesListScreen}
         options={{
           ...GlobalNavigationOptions,
-          headerLeft: () => <HeaderNavButton type="menu" />,
+          //headerLeft: () => <HeaderNavButton type="menu" />,
           headerTitle: translate.get(NoticesConfig.title)
           //headerRight: () => (<ItemsVisibilityButton moduleID={BoardConfig.moduleID} />)
         }}

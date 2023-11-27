@@ -19,7 +19,7 @@ export default function NewsStackNavigator() {
         component={NewsListScreen}
         options={{
           ...GlobalNavigationOptions,
-          headerLeft: () => <HeaderNavButton type="menu" />,
+          //headerLeft: () => <HeaderNavButton type="menu" />,
           headerTitle: translate.get(NewsConfig.title),
           /*headerRight: () => (
             <View style={appStyles.headerRightContainer}>

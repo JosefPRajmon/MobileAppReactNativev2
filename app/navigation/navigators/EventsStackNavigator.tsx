@@ -38,7 +38,7 @@ export default function EventsStackNavigator({ navigation }: any) {
                 component={EventsListScreen}
                 options={{
                     ...GlobalNavigationOptions,
-                    headerLeft: () => (<HeaderNavButton type="menu" />),
+                    //headerLeft: () => (<HeaderNavButton type="menu" />),
                     headerTitle: translate.get(EventsConfig.title),
                     /*headerRight: () => (
                         <View style={appStyles.headerRightContainer} >

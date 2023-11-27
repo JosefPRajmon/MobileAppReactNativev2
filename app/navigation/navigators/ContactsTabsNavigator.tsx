@@ -78,7 +78,7 @@ function AlphabetNavigator() {
         component={ContactsAlphabetTabScreen}
         options={{
           ...GlobalNavigationOptions,
-          headerLeft: () => <HeaderNavButton type="menu" />,
+          //headerLeft: () => <HeaderNavButton type="menu" />,
           headerTitle: translate.get(ContactsConfig.title)
           //headerShown: getHeaderShown(route)
         }}

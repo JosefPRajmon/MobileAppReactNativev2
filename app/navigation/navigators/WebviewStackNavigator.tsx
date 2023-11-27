@@ -17,7 +17,7 @@ const WebviewStackNavigator = ({ route }: any) => {
         initialParams={{ ...route.params, pageID: route.name }}
         options={{
           ...GlobalNavigationOptions,
-          headerLeft: () => <HeaderNavButton type='menu' />,
+          //headerLeft: () => <HeaderNavButton type='menu' />,
           headerTitle: translate.get(
             route?.params?.title || AppModules.webview.config.title
           )

@@ -65,7 +65,7 @@ export default function PlacesStackNavigator({ navigation, route }: any) {
         initialParams={route.params}
         options={{
           ...GlobalNavigationOptions,
-          headerLeft: () => <HeaderNavButton type="menu" />,
+          //headerLeft: () => <HeaderNavButton type="menu" />,
           headerTitle: translate.get(route?.params?.title),
           headerShown: false
         }}

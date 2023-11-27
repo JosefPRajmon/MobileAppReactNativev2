@@ -18,7 +18,7 @@ export default function LossesStackNavigator({ navigation }: any) {
         component={LossesListScreen}
         options={{
           ...GlobalNavigationOptions,
-          headerLeft: () => <HeaderNavButton type='menu' />,
+          //headerLeft: () => <HeaderNavButton type='menu' />,
           headerTitle: translate.get(LossesConfig.title)
         }}
       />

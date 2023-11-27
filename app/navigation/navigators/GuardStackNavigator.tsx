@@ -19,7 +19,7 @@ export default function GuardStackNavigator() {
                 component={GuardScreen}
                 options={{
                     ...GlobalNavigationOptions,
-                    headerLeft: () => (<HeaderNavButton type="menu" />),
+                    //headerLeft: () => (<HeaderNavButton type="menu" />),
                     headerTitle: translate.get(GuardConfig.title)
                 }}
             />
