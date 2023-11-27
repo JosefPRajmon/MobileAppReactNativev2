@@ -18,7 +18,7 @@ import {
 } from "../navigation/ScreenNames";
 import { NoDataSVG } from "../components/svg-componets/noData";
 import { filterByDate } from "../util/helper";
-import { EVENTS_SET_CATEGORY } from "../store/actions/actionTypes";
+import { EVENTS_OPEN_MODAL, EVENTS_SET_CATEGORY } from "../store/actions/actionTypes";
 import { ButtonMenu } from "../components/header/ButtonMenu";
 
 export default function EventsListScreen({ navigation }: any) {
@@ -97,7 +97,8 @@ export default function EventsListScreen({ navigation }: any) {
         title={item.name}
         thumb={createThumbnailUrl(item.id_thumb, "thumb")}
         subtitle={item.place}
-        onItemPress={() => handleItemPress(item)}
+            onItemPress={() => handleItemPress(item)}
+        image="true"
         //thumb={item.thumb}
         //isReaded={item.isReaded}
       />
@@ -162,7 +163,16 @@ export default function EventsListScreen({ navigation }: any) {
           />
         }
           />
-          <ButtonMenu navigation={navigation}
+          <ButtonMenu navigation={navigation} item1="calender" item2="filtr"
+              function1={() => dispatch({
+                  type: EVENTS_OPEN_MODAL,
+                  payload: "dates"
+              })}
+              function2 = {() => dispatch({
+              type: EVENTS_OPEN_MODAL,
+          payload: "categories"
+                                })
+              }
           />
     </View>
   );

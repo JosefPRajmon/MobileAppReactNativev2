@@ -25,6 +25,7 @@ import { sendReport } from "../providers/BackendProvider";
 import { ReportsConfig } from "../config/modules/Reports.config";
 import { LoaderModal } from "../modals/LoaderModal";
 import { translate } from "../services/translate.service";
+import { ButtonMenu } from "../components/header/ButtonMenu";
 
 export default function ReportsScreen({ navigation }: any) {
   const dispatch = useDispatch();
@@ -273,8 +274,11 @@ export default function ReportsScreen({ navigation }: any) {
       <LoaderModal
         loading={uploading}
         text={translate.get("text-uploading-report")}
-      />
-      <ScrollView scrollIndicatorInsets={{ right: 1 }}>
+          />
+          <ButtonMenu navigation={navigation}
+          />
+          <ScrollView scrollIndicatorInsets={{ right: 1 }}>
+              <View>
         <View style={styles.container}>
           <Text style={AppStyles.detailTitle}>Zadání nového hlášení</Text>
           <View style={styles.descriptionContainer}>
@@ -497,7 +501,9 @@ export default function ReportsScreen({ navigation }: any) {
             disabled={!isValid || !location || uploading}
             onButtonPress={handleSubmit(onSubmit)}
           />
-        </View>
+                  </View>
+                  <View style={{ height:50 }}></View>
+              </View>
       </ScrollView>
     </KeyboardAvoidingView>
   );

@@ -35,7 +35,7 @@ export default function ContactsTabsNavigator() {
           ),
           tabBarStyle: {
             ...GlobalNavigationOptions.tabBarStyle,
-            display: getTabBarVisibility(route) ? "flex" : "none"
+            display: getTabBarVisibility(route) ? "none" : "none"
           }
         })}
       />
@@ -49,7 +49,7 @@ export default function ContactsTabsNavigator() {
           ),
           tabBarStyle: {
             ...GlobalNavigationOptions.tabBarStyle,
-            display: getTabBarVisibility(route) ? "flex" : "none"
+            display: getTabBarVisibility(route) ? "none" : "none"
           }
         })}
       />
@@ -101,7 +101,7 @@ const DepartmentsStack = createStackNavigator();
 
 function DepartmentsNavigator() {
   return (
-    <DepartmentsStack.Navigator>
+    <DepartmentsStack.Navigator >
       <DepartmentsStack.Screen
         name="DepartmentsScreen"
         component={ContactsDepartmentsTabScreen}

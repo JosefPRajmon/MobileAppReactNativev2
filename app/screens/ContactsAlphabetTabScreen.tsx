@@ -25,6 +25,7 @@ import appStyles from '../themes/AppStyles';
 import Svg, { G, Path, Polygon, Rect, Polyline } from "react-native-svg";
 import Colors from '../../towns/litovel/themes/Colors';
 import { ButtonMenu } from '../components/header/ButtonMenu';
+import ContactsDepartmentsTabScreen from './ContactsDepartmentsTabScreen';
 
 export default function ContactsAlphabetTabScreen({ navigation }: any) {
     const dispatch = useDispatch();
@@ -152,7 +153,9 @@ export default function ContactsAlphabetTabScreen({ navigation }: any) {
                 }
             />
 
-            <ButtonMenu navigation={navigation} item1="onSide"  />
+            <ButtonMenu navigation={navigation} item1="odbor" function1={() => {
+                navigation.navigate("DepartmentsTab");
+            }} />
 
 
         </View>

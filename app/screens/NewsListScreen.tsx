@@ -68,7 +68,8 @@ export default function NewsListScreen({ navigation }: any) {
         description={item.description.length ? item.description : false}
         linkText={item.link && translate.get('text-more-on-web')}
         onItemPress={() => handleItemPress(item)}
-        thumb={createThumbnailUrl(item.thumb, 'thumb')}
+            thumb={createThumbnailUrl(item.thumb, 'thumb')}
+        image="true"
         //isReaded={item.isReaded}
       />
     );
@@ -112,6 +113,7 @@ export default function NewsListScreen({ navigation }: any) {
           />
         }
           />
+          
           <ButtonMenu navigation={navigation}
           />
     </View>

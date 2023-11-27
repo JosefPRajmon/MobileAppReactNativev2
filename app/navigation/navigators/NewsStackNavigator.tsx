@@ -21,11 +21,11 @@ export default function NewsStackNavigator() {
           ...GlobalNavigationOptions,
           headerLeft: () => <HeaderNavButton type="menu" />,
           headerTitle: translate.get(NewsConfig.title),
-          headerRight: () => (
+          /*headerRight: () => (
             <View style={appStyles.headerRightContainer}>
               <ItemsVisibilityButton moduleID={NewsConfig.moduleID} />
             </View>
-          )
+          )*/
         }}
       />
     </News.Navigator>

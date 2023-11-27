@@ -22,10 +22,10 @@ export default function OnSiteStackNavigator() {
                     ...GlobalNavigationOptions,
                     headerLeft: () => (<HeaderNavButton type="menu" />),
                     headerTitle: translate.get(OnSiteConfig.title),
-                    headerRight: () => (
+                    /*headerRight: () => (
                         <View style={appStyles.headerRightContainer} >
                             <ItemsVisibilityButton moduleID={OnSiteConfig.moduleID} />
-                        </View>)
+                        </View>)*/
                 }}
             />
         </OnSite.Navigator>

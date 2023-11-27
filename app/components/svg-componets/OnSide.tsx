@@ -9,9 +9,9 @@ const SvgComponent = (props) => (
             clipRule: "evenodd",
             strokeLinejoin: "round",
             strokeMiterlimit: 2,
-            margin: "10%",
-            height: "70%",
-            width: "70%"
+            height: "90%",
+            width: "90%",
+            marginBottom: "7%"
         }}
         viewBox="0 0 750 863"
         {...props}

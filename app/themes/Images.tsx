@@ -10,6 +10,13 @@ import ContaksComponent from "../components/svg-componets/Contaks";
 import NoticesComponent from "../components/svg-componets/Notices";
 import ReportsComponent from "../components/svg-componets/Reports";
 import AboutComponent from "../components/svg-componets/AboutApp";
+import FiltrComponent from "../components/svg-componets/Filtr";
+import AbecComponent from "../components/svg-componets/Abc";
+import OdborComponent from "../components/svg-componets/Odbors";
+import { Ionicons } from "@expo/vector-icons";
+import Colors from "./Colors";
+import Metrics from "./Metrics";
+
 
 export const As4uLogo = ({ width, height }: any) => {
   return (
@@ -1223,6 +1230,25 @@ export const IconsLoader = ({ page, type, style = { width: '100%', height: '100%
         );
         case "aboutApp": return (
             <AboutComponent height={style.height} width={style.width} margin={style.margin} />
+        );
+        case "calender": return (
+            <Ionicons
+                size={Metrics.icon.small}
+                name={"calendar"}
+                color={Colors.navHeader.buttonsColor}
+            />
+        );
+        case "filtr": return (
+
+            <FiltrComponent height={style.height} width={style.width} margin={style.margin} />
+        );
+        case "ab": return (
+
+            <AbecComponent height={style.height} width={style.width} margin={style.margin} />
+        );
+        case "odbor": return (
+
+            <OdborComponent height={style.height} width={style.width} margin={style.margin} />
         );
         default: return (
             <Svg

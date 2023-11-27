@@ -1,6 +1,9 @@
-import { StyleSheet } from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
 //import createNormalizeStyle from '../util/textHelper';
 import { Colors, Metrics } from './';
+
+const screenWidth = Dimensions.get('window').width;
+const menuBottonPart = (screenWidth - 50) / 2;
 
 const appStyles = StyleSheet.create({
     /** Components */
@@ -131,31 +134,48 @@ const appStyles = StyleSheet.create({
         color: Colors.text.defaultText
     },
 
+    
 
     bottomView: {
+        position: 'absolute', 
+        bottom: 0,
+        left:0,
         height: 50,
-        backgroundColor: 'rgba(255, 255, 255, 0.0)'
-        // Další styly pro spodní View
+        width:"100%",
+        backgroundColor: 'rgba(255, 255, 255, 0.0)',
+        zIndex:1
     },
     menuCentr: {
-        width: "14%",
+        width: 50,
         height: 50,
         padding: "3%",
         flex: 1,
-        backgroundColor: Colors.navHeader.backgroundColor
+        backgroundColor: Colors.navHeader.backgroundColor,
+        borderTopLeftRadius: 10,
+        borderTopRightRadius:10
     }, 
     menuLeft: {
-        width: "43%",
-        backgroundColor: Colors.navHeader.backgroundColor
+        width: menuBottonPart,
+        //backgroundColor: Colors.navHeader.backgroundColor
     },
     menuRight: {
-        width: "43%",
+        width: menuBottonPart,
+        //backgroundColor: Colors.navHeader.backgroundColor
+    },
+    menuRightInnert: {
+        height: "80%",
+        width: "100%",
+        backgroundColor: Colors.navHeader.backgroundColor
+    },
+    menuLeftInnert: {
+        height: "80%",
+        width: "100%",
         backgroundColor: Colors.navHeader.backgroundColor
     },
     menuItem: {
         width: "28%",
         margin: "3%",
-        padding: "5%",
+        padding: "3%",
     }
 });
 

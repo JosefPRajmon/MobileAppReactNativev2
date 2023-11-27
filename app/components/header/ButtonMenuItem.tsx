@@ -15,7 +15,7 @@ export function ButtonMenuItem({ navigation, page = "news" }: any) {
     const goTo = (moduleID: string, params: any) => {
         dispatch({
             type: SET_FOCUSED_ROUTE,
-            payload: { moduleID: moduleID, params: params }
+            payload: { moduleID: moduleID, pageID: moduleID, params: params }
         });
         navigation.navigate(moduleID, params);
     };
@@ -24,7 +24,6 @@ export function ButtonMenuItem({ navigation, page = "news" }: any) {
         <TouchableOpacity style={AppStyles.menuItem} onPress={() => {
            // Alert.alert(page);
             goTo(page, null)
-//            navigation.navigate("news");
         }}>
 
             <IconsLoader page={page} />

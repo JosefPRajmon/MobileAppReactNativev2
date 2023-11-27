@@ -18,6 +18,7 @@ import { NOTICES_DETAIL, NOTICES_FILTER_MODAL } from '../navigation/ScreenNames'
 import { NOTICES_SET_TYPES } from '../store/actions/actionTypes';
 import { NoticesConfig } from '../config/modules/Notices.config';
 import { NoDataSVG } from '../components/svg-componets/noData';
+import { ButtonMenu } from '../components/header/ButtonMenu';
 
 export default function NoticesListScreen({ navigation }: any) {
     const dispatch = useDispatch();
@@ -128,6 +129,8 @@ export default function NoticesListScreen({ navigation }: any) {
                         onRefresh={onRefresh}
                     />
                 }
+            />
+            <ButtonMenu navigation={navigation}
             />
         </View>
     );

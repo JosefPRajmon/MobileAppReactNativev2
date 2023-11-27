@@ -87,8 +87,7 @@ export const NoDataSVG = ({ navigation }: any) => {
 					</G>
 				</G>
 			</Svg>
-			<ButtonMenu navigation={navigation}
-			/>
+
 		</View>
 	)
 }

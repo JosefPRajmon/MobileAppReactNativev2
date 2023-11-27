@@ -65,6 +65,7 @@ export default function OnSiteListScreen({ navigation }: any) {
             linkText={translate.get("text-more-on-web")}
             onItemPress={() => handleItemPress(item)}
             thumb={createThumbnailUrl(item.thumb, "thumb")}
+            image="true"
         //isReaded={item.isReaded}
         />)
     };

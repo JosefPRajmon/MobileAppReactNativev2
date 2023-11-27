@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
+import { StyleSheet, View, Text, TouchableOpacity, Alert } from "react-native";
 import { FlatGrid } from "react-native-super-grid";
 import { Colors, Metrics } from "../themes";
 import { MmvmIcon as Icon } from "../themes/Fonts";
@@ -60,7 +60,7 @@ export default function HomeScreen({ navigation }: any) {
       >
             <View style={[styles.itemContainer, { height: cardWidth }]}>
                 
-                <IconsLoader page={item.moduleID} style={{ width: '70%', height: '70%', margin:"10%" }} />
+                <IconsLoader page={item.moduleID} style={{ width: '40%', height: '40%', margin:"10%" }} />
                 
           <Text
             style={[styles.itemName, { color: Colors.dashBoard.cardTitle }]}
@@ -72,7 +72,8 @@ export default function HomeScreen({ navigation }: any) {
     );
   };
 
-  const goTo = (moduleID: string, params: any) => {
+    const goTo = (moduleID: string, params: any) => {
+        console.log(params.pageID); 
     dispatch({
       type: SET_FOCUSED_ROUTE,
       payload: { moduleID: moduleID, pageID: params.pageID, params: params }

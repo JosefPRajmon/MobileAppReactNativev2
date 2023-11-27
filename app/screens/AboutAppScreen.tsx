@@ -10,14 +10,19 @@ import { ScrollView } from 'react-native-gesture-handler';
 import { AppConfig } from '../config/App.config';
 import { As4uLogo } from '../themes/Images';
 import { SumperkGDPR } from '../components/gdpr/SumperkGDPR';
+import { ButtonMenu } from '../components/header/ButtonMenu';
 
-export default function AboutAppScreen() {
+export default function AboutAppScreen({ navigation }: any) {
   const handleOpenLink = (link: string) => {
     WebBrowser.openBrowserAsync(link);
   };
 
-  return (
-    <ScrollView scrollIndicatorInsets={{ right: 1 }}>
+    return (
+        <View>
+            <ButtonMenu navigation={navigation}
+        />
+            <ScrollView scrollIndicatorInsets={{ right: 1 }}>
+                <View>
       <View style={styles.container}>
         <View style={styles.logoContainer}>
           <As4uLogo
@@ -187,9 +192,16 @@ export default function AboutAppScreen() {
           </TouchableOpacity>
         )}
         {AppConfig.showGDPRAboutApp &&
-          AppConfig.appID === 'cz.as4u.mmvm.sumperk' && <SumperkGDPR />}
-      </View>
-    </ScrollView>
+                        AppConfig.appID === 'cz.as4u.mmvm.sumperk' && <SumperkGDPR />}
+
+
+                    </View>
+                    <View style={{ height: 50, }}>
+                    </View>
+                </View>                    
+            </ScrollView>
+
+        </View>
   );
 }
 

@@ -14,6 +14,8 @@ import { updateModules } from '../store/actions/ModulesActions';
 import { CONTACTS_DETAIL } from '../navigation/ScreenNames';
 import { filerForAccordion } from '../util/helper';
 import { NoDataSVG } from '../components/svg-componets/noData';
+import { ButtonMenu } from '../components/header/ButtonMenu';
+import ContactsAlphabetTabScreen from './ContactsAlphabetTabScreen';
 
 export default function ContactsDepartmentsTabScreen({ navigation }: any) {
   const dispatch = useDispatch();
@@ -118,8 +120,9 @@ export default function ContactsDepartmentsTabScreen({ navigation }: any) {
     navigation.navigate(CONTACTS_DETAIL, { id_person: item.id_person });
   };
 
-  return departmentsData.length !== 0 ? (
-    <Accordion
+    return departmentsData.length !== 0 ? (
+        <View>
+            <Accordion
       key={cuid()}
       refreshControl={
         <RefreshControl
@@ -133,7 +136,12 @@ export default function ContactsDepartmentsTabScreen({ navigation }: any) {
       renderHeader={renderHeader}
       ListEmptyComponent={<NoDataSVG />}
       expanded={[]}
-    />
+        />
+            <ButtonMenu navigation={navigation} item1="ab" function1={() => {
+                navigation.navigate('AlphabetTab');
+            }} />
+        </View>
+
   ) : (
     <NoDataSVG />
   );

@@ -17,7 +17,7 @@ import { updateModules } from '../store/actions/ModulesActions';
 import { ListItemSeparator } from '../components/list/ListItemSeparator';
 import { BOARD_DETAIL, BOARD_FILTER_MODAL } from '../navigation/ScreenNames';
 import { NoDataSVG } from '../components/svg-componets/noData';
-import { BOARD_SET_TYPE, BOARD_SET_SOURCE } from '../store/actions/actionTypes';
+import { BOARD_SET_TYPE, BOARD_SET_SOURCE, BOARD_OPEN_MODAL } from '../store/actions/actionTypes';
 import Colors from '../../towns/prostejov/themes/Colors';
 
 import Svg, { G, Path, Polygon, Rect, Polyline } from "react-native-svg";
@@ -140,7 +140,11 @@ export default function BoardListScreen({ navigation }: any) {
             />
 
 
-            <ButtonMenu navigation={navigation }
+            <ButtonMenu navigation={navigation} item1="filtr" function1={() =>
+                dispatch({
+                    type: BOARD_OPEN_MODAL,
+                    payload: true
+                }) }
             />
         </View>
     )

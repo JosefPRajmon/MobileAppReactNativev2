@@ -4,6 +4,8 @@ import moment from 'moment';
 import { Metrics, AppStyles, Colors } from '../../themes';
 import { MaterialCommunityIcons as Icon } from '@expo/vector-icons';
 import { ListItemSeparator } from './ListItemSeparator';
+import { TownLogo } from '../../themes/Images';
+import { AppConfig } from '../../config/App.config';
 
 export default function ListItem(props: any) {
   const {
@@ -16,7 +18,8 @@ export default function ListItem(props: any) {
     date,
     isReaded,
     useSeparator,
-    disabled
+      disabled,
+      image = false
   } = props;
 
   return (
@@ -28,9 +31,21 @@ export default function ListItem(props: any) {
       <View style={[styles.container, useSeparator && styles.separator]}>
         {thumb && (
           <View style={styles.imageContainer}>
-            <Image source={{ uri: thumb }} style={styles.image} />
+                      <Image source={{ uri: thumb }} style={styles.image} />
+
           </View>
-        )}
+              )}       
+              {image==="true" && (
+                  !thumb && (
+              <View style={styles.imageContainer}>
+                  <TownLogo
+                      width={80}
+                      height={80}
+                      appID={AppConfig.appID}
+                      type={AppConfig.homeScreenLogo} />
+              </View>
+              )
+              )}
         <View style={styles.textContainer}>
           {date && (
             <Text style={styles.date}>
@@ -91,7 +106,9 @@ const styles = StyleSheet.create({
     padding: Metrics.padding.normal
   },
   image: {
-    ...AppStyles.listItemThumb
+      ...AppStyles.listItemThumb,
+      borderRadius:15
+    
   },
   title: {
     ...AppStyles.listItemTitle

@@ -39,7 +39,7 @@ export default function BoardStackNavigator({ navigation }: any) {
           headerTitle: translate.get(
             AppModules.board.title || AppModules.board.config.title
           ),
-          headerRight: () => (
+          /*headerRight: () => (
             <View style={appStyles.headerRightContainer}>
               <HeaderButton
                 iconType='MaterialCommunityIcons'
@@ -52,7 +52,7 @@ export default function BoardStackNavigator({ navigation }: any) {
                 }
               />
             </View>
-          )
+          )*/
         }}
       />
       <Board.Screen

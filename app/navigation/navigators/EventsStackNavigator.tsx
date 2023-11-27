@@ -40,7 +40,7 @@ export default function EventsStackNavigator({ navigation }: any) {
                     ...GlobalNavigationOptions,
                     headerLeft: () => (<HeaderNavButton type="menu" />),
                     headerTitle: translate.get(EventsConfig.title),
-                    headerRight: () => (
+                    /*headerRight: () => (
                         <View style={appStyles.headerRightContainer} >
                             <HeaderButton
                                 iconType="MaterialCommunityIcons"
@@ -59,7 +59,7 @@ export default function EventsStackNavigator({ navigation }: any) {
                                 })}
                             />
                         </View>
-                    )
+                    )*/
                 }}
             />
             <Events.Screen
