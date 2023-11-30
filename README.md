@@ -62,4 +62,5 @@
 generace app /abb
  eas build -p android --profile develop
 
- build eas build --profile litovel
+ build 
+ eas build --profile litovel
