@@ -11,6 +11,7 @@ import { AppConfig } from "../config/App.config";
 import cuid from "cuid";
 import { normalize } from "../themes/Metrics";
 import { IconsLoader } from "../themes/Images";
+import * as WebBrowser from 'expo-web-browser';
 
 export default function HomeScreen({ navigation }: any) {
   const dispatch = useDispatch();
@@ -72,8 +73,15 @@ export default function HomeScreen({ navigation }: any) {
     );
   };
 
-    const goTo = (moduleID: string, params: any) => {
-        console.log(params.pageID); 
+     const goTo = async (moduleID: string, params: any) => {
+        if (moduleID == "notices") {
+            if (AppConfig.appID === "cz.as4u.mmvm.litovel") {
+           
+                await WebBrowser.openBrowserAsync("https://www.litovel.eu/cs/urad/uredni-deska/aktualni-informace/souhrnne-informace-o-odpadech/")
+                return;
+            }
+        }
+        console.log("test2")
     dispatch({
       type: SET_FOCUSED_ROUTE,
       payload: { moduleID: moduleID, pageID: params.pageID, params: params }

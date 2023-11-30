@@ -57,10 +57,10 @@ export default function AboutAppScreen({ navigation }: any) {
           }
         >
           <View style={styles.textContainer}>
+            <Text style={styles.itemSubtitle}>WEB</Text>
             <Text style={styles.itemTitle}>
               {AppConfig.aboutApp.developerWeb.pretty}
             </Text>
-            <Text style={styles.itemSubtitle}>WEB</Text>
           </View>
           <View style={styles.iconContainer}>
             <Icon
@@ -78,10 +78,10 @@ export default function AboutAppScreen({ navigation }: any) {
           }
         >
           <View style={styles.textContainer}>
+            <Text style={styles.itemSubtitle}>EMAIL</Text>
             <Text style={styles.itemTitle}>
               {AppConfig.aboutApp.developerEmail}
             </Text>
-            <Text style={styles.itemSubtitle}>EMAIL</Text>
           </View>
           <View style={styles.iconContainer}>
             <Icon
@@ -109,8 +109,8 @@ export default function AboutAppScreen({ navigation }: any) {
             }
           >
             <View style={styles.textContainer}>
-              <Text style={styles.itemTitle}>{AppConfig.aboutTown.email}</Text>
               <Text style={styles.itemSubtitle}>EMAIL</Text>
+              <Text style={styles.itemTitle}>{AppConfig.aboutTown.email}</Text>
             </View>
             <View style={styles.iconContainer}>
               <Icon
@@ -132,8 +132,8 @@ export default function AboutAppScreen({ navigation }: any) {
             }
           >
             <View style={styles.textContainer}>
-              <Text style={styles.itemTitle}>{AppConfig.aboutTown.phone}</Text>
               <Text style={styles.itemSubtitle}>TELEFON</Text>
+              <Text style={styles.itemTitle}>{AppConfig.aboutTown.phone}</Text>
             </View>
             <View style={styles.iconContainer}>
               <Icon
@@ -153,10 +153,10 @@ export default function AboutAppScreen({ navigation }: any) {
             }
           >
             <View style={styles.textContainer}>
+              <Text style={styles.itemSubtitle}>WEB</Text>
               <Text style={styles.itemTitle}>
                 {AppConfig.aboutTown.web.pretty}
               </Text>
-              <Text style={styles.itemSubtitle}>WEB</Text>
             </View>
             <View style={styles.iconContainer}>
               <Icon
@@ -176,10 +176,10 @@ export default function AboutAppScreen({ navigation }: any) {
             }
           >
             <View style={styles.textContainer}>
+              <Text style={styles.itemSubtitle}>WEB</Text>
               <Text style={styles.itemTitle}>
                 {AppConfig.aboutTown.gdpr.pretty}
               </Text>
-              <Text style={styles.itemSubtitle}>WEB</Text>
             </View>
             <View style={styles.iconContainer}>
               <Icon

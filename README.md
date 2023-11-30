@@ -57,3 +57,7 @@
 
 - 18: Předělána logika modulu "Places"
 - 19: Opraveno řazení kalendáře akcí
+
+
+generace app /abb
+ eas build -p android --profile develop

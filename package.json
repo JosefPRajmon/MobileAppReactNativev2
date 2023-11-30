@@ -1,6 +1,7 @@
 {
   "main": "node_modules/expo/AppEntry.js",
-  "version": "19",
+  "version": "20",
+    "versionCode": 10,
   "scripts": {
     "start": "npx expo start --clear",
     "android": "npx expo start --android",

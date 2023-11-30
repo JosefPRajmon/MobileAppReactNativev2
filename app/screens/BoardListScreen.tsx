@@ -83,7 +83,7 @@ export default function BoardListScreen({ navigation }: any) {
     const ItemView = ({ item }: any) => {
         return (
             <ListItem
-                title={item.title}
+                title={item.title.replace("\\&quot;", "").replace("\\&quot;", "")}
                 subtitle={translate.get("text-board-hang") + item.date_pretty}
                 onItemPress={() => handleItemPress(item)}
             />

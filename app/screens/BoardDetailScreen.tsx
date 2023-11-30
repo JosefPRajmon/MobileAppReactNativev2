@@ -31,7 +31,7 @@ export default function BoardDetailScreen({ route }: any) {
   return detailData !== undefined ? (
     <ScrollView scrollIndicatorInsets={{ right: 1 }}>
       <View style={styles.container}>
-        <Text style={AppStyles.detailTitle}>{detailData.title}</Text>
+        <Text style={AppStyles.detailTitle}>{detailData.title.replace("\\&quot;","").replace("\\&quot;","")}</Text>
         <DetailItem
           title={'Den vystavení'}
           data={moment(detailData.date_from).format('D.M.YYYY')}
@@ -58,13 +58,15 @@ export default function BoardDetailScreen({ route }: any) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    width: '100%',
+    width: '90%',
     flexDirection: 'column',
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
     padding: Metrics.padding.normal,
     backgroundColor: Colors.appBackround,
-    paddingBottom: Metrics.padding.big
+        paddingBottom: Metrics.padding.big,
+        margin: "5%",
+        borderRadius: 10
   },
   description: {
     fontSize: Metrics.font.text,

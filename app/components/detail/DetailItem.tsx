@@ -175,23 +175,24 @@ export default function DetailItem(props: any) {
               }
             >
               {item.number && (
-                <View style={styles.textContainer}>
-                  <Text style={styles.itemTitle}>{item.number}</Text>
+                      <View style={styles.textContainer}>
+
                   <Text style={styles.itemSubtitle}>
                     {item.name ? item.name : 'TELEFON'}
                   </Text>
+                  <Text style={styles.itemTitle}>{item.number}</Text>
                 </View>
               )}
               {item.email && (
                 <View style={styles.textContainer}>
-                  <Text style={styles.itemTitle}>{item.email}</Text>
                   <Text style={styles.itemSubtitle}>EMAIL</Text>
+                  <Text style={styles.itemTitle}>{item.email}</Text>
                 </View>
               )}
               {item.link && (
                 <View style={styles.textContainer}>
-                  <Text style={styles.itemTitle}>{item.link}</Text>
                   <Text style={styles.itemSubtitle}>WEB</Text>
+                  <Text style={styles.itemTitle}>{item.link}</Text>
                 </View>
               )}
               <View style={styles.iconContainer}>

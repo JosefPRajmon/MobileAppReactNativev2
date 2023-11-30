@@ -83,7 +83,9 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     padding: Metrics.padding.normal,
     backgroundColor: Colors.appBackround,
-    paddingBottom: Metrics.padding.big
+        paddingBottom: Metrics.padding.big,
+        margin: "5%",
+        borderRadius: 10
   },
   description: {
     fontSize: Metrics.font.text,

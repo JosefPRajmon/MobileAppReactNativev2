@@ -115,13 +115,15 @@ export default function ContactsDetailScreen({ route, navigation }: any) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    width: '100%',
+    width: '90%',
     flexDirection: 'column',
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
     padding: Metrics.padding.normal,
     backgroundColor: Colors.appBackround,
-    paddingBottom: Metrics.padding.big
+        paddingBottom: Metrics.padding.big,
+        margin: "5%",
+        borderRadius: 10
   },
   description: {
     fontSize: Metrics.font.text,
