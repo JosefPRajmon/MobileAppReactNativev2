@@ -3,11 +3,12 @@ import { NewsConfig } from './modules/News.config';
 import { OnSiteConfig } from './modules/OnSite.config';
 import { EventsConfig } from './modules/Events.config';
 import { ContactsConfig } from './modules/Contacts.config';
-// import { SituationsConfig } from './modules/Situations.config';
+ import { SituationsConfig } from './modules/Situations.config';
 import { BoardConfig } from './modules/Board.config';
 import { ReportsConfig } from './modules/Reports.config';
 import { AboutAppConfig } from './modules/AboutApp.config';
 import { NoticesConfig } from './modules/Notices.config';
+import { SettingsConfig } from './modules/Settings.config';
 
 // Navigators
 import NewsStackNavigator from '../navigation/navigators/NewsStackNavigator';
@@ -15,10 +16,11 @@ import OnSiteStackNavigator from '../navigation/navigators/OnSiteStackNavigator'
 import EventsStackNavigator from '../navigation/navigators/EventsStackNavigator';
 import BoardStackNavigator from '../navigation/navigators/BoardStackNavigator';
 import ContactsTabsNavigator from '../navigation/navigators/ContactsTabsNavigator';
-// import SituationsStackNavigator from '../navigation/navigators/SituationsStackNavigator';
+ import SituationsStackNavigator from '../navigation/navigators/SituationsStackNavigator';
 import AboutAppStackNavigator from '../navigation/navigators/AboutAppStackNavigator';
 import ReportsStackNavigator from '../navigation/navigators/ReportsStackNavigator';
 import NoticesStackNavigator from '../navigation/navigators/NoticesStackNavigator';
+import SettingsStackNavigator from '../navigation/navigators/SettingsStackNavigator';
 
 export type AppModule = {
   config: Object;
@@ -51,11 +53,11 @@ export const AppModules: any = {
     config: ContactsConfig,
     navigator: ContactsTabsNavigator
   },
-  /* situations: {
+   situations: {
     config: SituationsConfig,
     navigator: SituationsStackNavigator,
     env: { appID: 2148 }
-  }, */
+  }, 
   notices: {
     config: NoticesConfig,
     navigator: NoticesStackNavigator,
@@ -66,6 +68,10 @@ export const AppModules: any = {
     navigator: ReportsStackNavigator,
     title: 'screen-title-reports-2'
   },
+    settings: {
+        config: SettingsConfig,
+        navigator: SettingsStackNavigator
+    },
   aboutApp: {
     config: AboutAppConfig,
     navigator: AboutAppStackNavigator
@@ -135,12 +141,14 @@ export const AppConfig: any = {
       items: [
             { module: AppModules.news },
             { module: AppModules.onSite },
+            { module: AppModules.onSite },
             { module: AppModules.events },
             { module: AppModules.board },
             { module: AppModules.contacts },
-            /* { module: AppModules.situations }, */
+            { module: AppModules.situations }, 
             { module: AppModules.notices },
             { module: AppModules.reports },
+            { module: AppModules.settings },
             { module: AppModules.aboutApp }
       ]
     }

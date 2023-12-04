@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Litovel v mobilu",
+    "name": "Praha11 v mobilu",
     "description": "Oficiální aplikace města Litovel",
     "version": "4.12.19",
     "orientation": "portrait",
@@ -31,7 +31,7 @@
       "translucent": false
     },
     "android": {
-      "package": "cz.as4u.mmvm.litovel",
+      "package": "cz.as4u.mmvm.praha11",
       "versionCode": 10,
       "adaptiveIcon": {
         "foregroundImage": "./app/assets/images/icon-adaptive.png",
@@ -40,7 +40,7 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "cz.as4u.mmvm.litovel",
+      "bundleIdentifier": "cz.as4u.mmvm.praha11",
       "buildNumber": "5",
       "infoPlist": {
         "NSCameraUsageDescription": "Aplikace vyžaduje přístup ke kameře, abyste mohli přidat fotografii k vašemu hlášení.",

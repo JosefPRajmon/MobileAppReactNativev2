@@ -77,7 +77,7 @@ export default function EventsDetailScreen({ route }: any) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    width: '100%',
+    width: '90%',
     flexDirection: 'column',
     alignItems: 'flex-start',
     justifyContent: 'flex-start',

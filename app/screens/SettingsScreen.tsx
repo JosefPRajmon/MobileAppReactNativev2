@@ -1,4 +1,3 @@
-import React from 'react';
 import { ListItem, CheckBox, Text, Body, View } from 'native-base';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 import { AppStyles, Colors, Metrics } from '../themes';
@@ -13,8 +12,16 @@ import {
 import DetailItem from '../components/detail/DetailItem';
 import { PICK_LOCATION_MODAL } from '../navigation/ScreenNames';
 import { AppConfig, AppModules } from '../config/App.config';
+import { ButtonMenu } from '../components/header/ButtonMenu';
+import { Picker  } from '@react-native-picker/picker';
+import { Alert } from 'react-native';
+import React, { useState } from 'react';
+import { GetvalueIndex, updater } from '../config/modules/Updater';
+import { DatabaseProvider } from '../providers/DatabaseProvider';
 
+const UpdatesArray=["jednou za hodinu","každých 6h","každých 12h","jednou za den","jednou za týden","jednou za měsíc"]
 export default function SettingsScreen({ navigation }: any) {
+    const db: any = DatabaseProvider.getInstance();
   const { modules, gpsNotification } = useSelector(
     (state: any) => state.settings
   );
@@ -39,10 +46,13 @@ export default function SettingsScreen({ navigation }: any) {
     });
   };
 
-  return (
-    <ScrollView scrollIndicatorInsets={{ right: 1 }}>
+    return (
+        <View style={{ height:"100%" }}>
+            <ScrollView scrollIndicatorInsets={{ right: 1 }}>
+                  
       <View style={styles.container}>
-        {AppConfig.enableNotifications && (
+              <View>
+                  {AppConfig.enableNotifications && (
           <View>
             <View style={styles.title}>
               <Text style={AppStyles.detailItemTitle}>Nofifikace</Text>
@@ -67,15 +77,16 @@ export default function SettingsScreen({ navigation }: any) {
             ))}
           </View>
         )}
-        <DetailItem
-          title={'Upozornění v okolí'}
-          data='Zvolte na mapě umístění, budete dostávat notifikace jen v jeho okolí.'
-        />
+              {AppConfig.enableNotifications && <DetailItem
+                  title={'Upozornění v okolí'}
+                  data='Zvolte na mapě umístění, budete dostávat notifikace jen v jeho okolí.'
+              />}
         <TouchableOpacity
           activeOpacity={0.7}
           style={[
             styles.locationPickerButton,
-            gpsNotification && { borderColor: 'green' }
+              gpsNotification && { borderColor: 'green' },
+              !gpsNotification && { display: 'none' }
           ]}
           onPress={handleOpenPickLocationModal}
         >
@@ -102,21 +113,50 @@ export default function SettingsScreen({ navigation }: any) {
           iconType="MaterialCommunityIcons"
           iconName="send"
           onButtonPress={handleSendSettings} /> */}
-      </View>
+              </View>
+                   
+
+
+
+                </View>
+                <View style={styles.BlockItem}>
+                    <Picker>
+                        <Picker.Item label="Java" value="java" />
+                        <Picker.Item label="JavaScript" value="js" />
+</Picker>
+                </View>
     </ScrollView>
+            <ButtonMenu navigation={navigation}
+            />
+      </View>
+      
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    //flex: 1,
     width: '100%',
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-    justifyContent: 'flex-start',
+
+    //flexDirection: 'column',
+    //alignItems: 'flex-start',
+    //justifyContent: 'flex-start',
+    padding: Metrics.padding.normal,
+    //backgroundColor: Colors.appBackround,
+        paddingBottom: Metrics.padding.big
+    
+    },
+    BlockItem: {
+    //flex: 1,
+    width: '90%',
+    //flexDirection: 'column',
+    //alignItems: 'flex-start',
+    //justifyContent: 'flex-start',
     padding: Metrics.padding.normal,
     backgroundColor: Colors.appBackround,
-    paddingBottom: Metrics.padding.big
+        paddingBottom: Metrics.padding.big,
+        margin: "5%",
+        borderRadius: 10
   },
   title: {
     width: '100%',

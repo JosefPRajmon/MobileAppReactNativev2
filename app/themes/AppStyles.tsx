@@ -146,8 +146,8 @@ const appStyles = StyleSheet.create({
         zIndex:1
     },
     menuCentr: {
-        width: 50,
-        height: 50,
+        width: 100,
+        height: "100%",
         padding: "3%",
         flex: 1,
         backgroundColor: Colors.navHeader.backgroundColor,

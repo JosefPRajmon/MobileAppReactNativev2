@@ -1,9 +1,10 @@
+import Getvalue from './Updater';
 export const ContactsConfig: any = {
     moduleID: "contacts",
     title: "screen-title-contacts",
     updateable: true,
     notificationEnabled: false,
-    autoUpdateTime: 2 * 60 * 60 * 1000,
+    autoUpdateTime: Getvalue("contaks"),
     dataType: "JSON",
     icon: {
         name: "contacts"
