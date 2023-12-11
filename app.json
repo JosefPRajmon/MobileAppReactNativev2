@@ -1,7 +1,6 @@
 {
   "expo": {
     "name": "Litovel v mobilu",
-    "slug": "mmvm_litovel",
     "description": "Oficiální aplikace města Litovel",
     "version": "4.12.19",
     "orientation": "portrait",
@@ -34,6 +33,7 @@
     "android": {
       "package": "cz.as4u.mmvm.litovel",
       "versionCode": 10,
+      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./app/assets/images/icon-adaptive.png",
         "backgroundColor": "#ffffff"

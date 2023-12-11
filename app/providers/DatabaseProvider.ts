@@ -39,6 +39,7 @@ export class DatabaseProvider {
     }
 
     public updateTable(table: any, data: any): Promise<any> {
+        //console.log("data:" + data)
         return new Promise((resolve, reject) => {
             this.db.transaction((tx: any) => {
                 let promises: Array<any> = [
@@ -46,7 +47,29 @@ export class DatabaseProvider {
                     tx.executeSql('CREATE TABLE IF NOT EXISTS ' + table.name + table.columns),
                 ];
 
+                //console.log("data:" + JSON.stringify(data))
+
+                try {
+                try {
+                    for (let item of data) {
+
+                        //console.log("item:" + JSON.stringify(item))
+                        const sqlStatement = 'INSERT OR REPLACE INTO ' + table.name + ' VALUES' + table.values;
+                        const args = table.mappedFunction(item);
+
+                        //table.name.search("tourist_info") !== -1 && console.log("updateTable row", sqlStatement, args);
+
+                        promises.push(tx.executeSql(sqlStatement, args, null,
+                            (transaction: any, result: any) => console.log("ExecuteSql ok: ", result),
+                            (tranaction: any, err: any) => console.log("ExecuteSql error: ", err)));
+                    }
+                }
+                catch (e) {
+                    let resultArray = (data as any)._j;
+                    data = resultArray;
                 for (let item of data) {
+
+                    //console.log("item:" + JSON.stringify(item))
                     const sqlStatement = 'INSERT OR REPLACE INTO ' + table.name + ' VALUES' + table.values;
                     const args = table.mappedFunction(item);
 
@@ -56,7 +79,11 @@ export class DatabaseProvider {
                         (transaction: any, result: any) => console.log("ExecuteSql ok: ", result),
                         (tranaction: any, err: any) => console.log("ExecuteSql error: ", err)));
                 }
+                }
 
+                } catch (e) {
+
+                }
                 Promise.all(promises)
                     .then(() => {
                         resolve(true);

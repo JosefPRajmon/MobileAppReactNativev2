@@ -1,9 +1,43 @@
+import { Alert } from "react-native";
+import { DatabaseProvider } from "../../providers/DatabaseProvider";
+import Getvalue, { PrimDataGet } from "./Updater";
+
 export const ContactsConfig: any = {
+    //,
     moduleID: "contacts",
     title: "screen-title-contacts",
     updateable: true,
     notificationEnabled: false,
-    autoUpdateTime: 2 * 60 * 60 * 1000,
+    autoUpdateTime: function () {
+        //Alert.alert("","jede to","ok")
+        let db= DatabaseProvider.getInstance()
+        try {
+            db.loadData("SELECT value FROM updates WHERE name = contaks")
+                .then((result) => {
+                    Alert.alert(result)
+                    console.log(result);
+                    return result;
+                })
+                .catch((error) => {
+                    console.error("Došlo k chybì:", error);
+            db.updateTable({ name: "updates", columns: "name,value" }, PrimDataGet())
+                .then(() => {
+                    return db.loadData("SELECT value FROM updates WHERE name = contaks").then((result) => {
+                        Alert.alert(result)
+                        console.log(result);
+                        return result;
+                    })
+                      //  .catch((error) => { });
+                })
+                .catch((error) => {
+                    console.error("Došlo k chybì:", error);
+                });
+                });
+        } catch (error) {
+            console.error("Došlo k chybì:", error);
+        }
+
+    },
     dataType: "JSON",
     icon: {
         name: "contacts"

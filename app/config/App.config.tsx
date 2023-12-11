@@ -19,6 +19,8 @@ import ContactsTabsNavigator from '../navigation/navigators/ContactsTabsNavigato
 import AboutAppStackNavigator from '../navigation/navigators/AboutAppStackNavigator';
 import ReportsStackNavigator from '../navigation/navigators/ReportsStackNavigator';
 import NoticesStackNavigator from '../navigation/navigators/NoticesStackNavigator';
+import { SettingsConfig } from './modules/Settings.config';
+import SettingsStackNavigator from '../navigation/navigators/SettingsStackNavigator';
 
 export type AppModule = {
   config: Object;
@@ -65,7 +67,11 @@ export const AppModules: any = {
     config: ReportsConfig,
     navigator: ReportsStackNavigator,
     title: 'screen-title-reports-2'
-  },
+    },
+    settings: {
+        config: SettingsConfig,
+        navigator: SettingsStackNavigator
+    },
   aboutApp: {
     config: AboutAppConfig,
     navigator: AboutAppStackNavigator
@@ -86,7 +92,9 @@ export const AppConfig: any = {
   initialModule: 'news',
   enableNotifications: false,
   statusbarStyle: 'dark',
-  updatesEnabled: true,
+    updatesEnabled: true,
+    Aktualits: true,
+    Events: true,
   notificationEndpoint: 'mobile/notification.php?akce=set',
   notificationEndpointTest: 'http://192.168.0.216:3001/token',
   domainUrl: 'https://www.litovel.eu/',
@@ -141,6 +149,7 @@ export const AppConfig: any = {
             /* { module: AppModules.situations }, */
             { module: AppModules.notices },
             { module: AppModules.reports },
+            { module: AppModules.settings },
             { module: AppModules.aboutApp }
       ]
     }

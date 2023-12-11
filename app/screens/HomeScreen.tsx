@@ -14,7 +14,8 @@ import { IconsLoader } from "../themes/Images";
 import * as WebBrowser from 'expo-web-browser';
 
 export default function HomeScreen({ navigation }: any) {
-  const dispatch = useDispatch();
+
+      const dispatch = useDispatch();
   const [cardWidth, setCardWidth] = useState<number>(
     Math.floor(
       Metrics.screenDims.width / Metrics.homeCardsCount -

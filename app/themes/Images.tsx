@@ -13,6 +13,7 @@ import AboutComponent from "../components/svg-componets/AboutApp";
 import FiltrComponent from "../components/svg-componets/Filtr";
 import AbecComponent from "../components/svg-componets/Abc";
 import OdborComponent from "../components/svg-componets/Odbors";
+import OptionComponent from "../components/svg-componets/Option";
 import { Ionicons } from "@expo/vector-icons";
 import Colors from "./Colors";
 import Metrics from "./Metrics";
@@ -1249,6 +1250,10 @@ export const IconsLoader = ({ page, type, style = { width: '100%', height: '100%
         case "odbor": return (
 
             <OdborComponent height={style.height} width={style.width} margin={style.margin} />
+        );
+        case "settings": return (
+
+            <OptionComponent height={style.height} width={style.width} margin={style.margin} />
         );
         default: return (
             <Svg
