@@ -38,6 +38,8 @@
     },
     "litovel": {
       "channel": "litovel",
+      
+      "buildType": "apk",
       "ios": {
         "resourceClass": "m1-medium"
       }
