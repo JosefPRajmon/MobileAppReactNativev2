@@ -64,3 +64,5 @@ generace app /abb
 
  build 
  eas build --profile litovel
+
+ npx react-native run-android 

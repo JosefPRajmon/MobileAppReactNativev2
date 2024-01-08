@@ -126,15 +126,26 @@ def jscFlavor = 'org.webkit:android-jsc-intl:r241213'
  * and the benefits of using Hermes will therefore be sharply reduced.
  */
 def enableHermes = project.ext.react.get("enableHermes", false);
-
-android {
-    compileSdkVersion 33
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
+task('testsOn17', type: Test) {
+    javaLauncher = javaToolchains.launcherFor {
+        languageVersion = JavaLanguageVersion.of(17)
     }
-
+tasks.withType(JavaCompile).configureEach {
+    javaCompiler = javaToolchains.compilerFor {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+android {
+}
+    compileSdkVersion "33"
+    compileOptions {
+        sourceCompatibility 21
+        targetCompatibility 21
+    }
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
     defaultConfig {
         applicationId "com.mattermost.rnbeta"
         minSdkVersion rootProject.ext.minSdkVersion
