@@ -137,16 +137,7 @@ tasks.withType(JavaCompile).configureEach {
 }
 android {
 }
-    compileSdkVersion "33"
-    compileOptions {
-        sourceCompatibility 21
-        targetCompatibility 21
-    }
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(17)
-    }
-    defaultConfig {
+      defaultConfig {
         applicationId "com.mattermost.rnbeta"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
