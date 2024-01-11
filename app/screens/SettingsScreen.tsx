@@ -13,6 +13,7 @@ import {
 import DetailItem from '../components/detail/DetailItem';
 import { PICK_LOCATION_MODAL } from '../navigation/ScreenNames';
 import { AppConfig, AppModules } from '../config/App.config';
+import { ButtonMenu } from '../components/header/ButtonMenu';
 
 export default function SettingsScreen({ navigation }: any) {
   const { modules, gpsNotification } = useSelector(
@@ -40,6 +41,7 @@ export default function SettingsScreen({ navigation }: any) {
   };
 
   return (
+    <View style={styles.prim}>
     <ScrollView scrollIndicatorInsets={{ right: 1 }}>
       <View style={styles.container}>
         {AppConfig.enableNotifications && (
@@ -104,13 +106,21 @@ export default function SettingsScreen({ navigation }: any) {
           onButtonPress={handleSendSettings} /> */}
       </View>
     </ScrollView>
+                <ButtonMenu navigation={navigation}
+              />
+    </View>
+
   );
 }
 
 const styles = StyleSheet.create({
+  prim: {
+    height: "100%"
+  },
   container: {
     flex: 1,
-    width: '100%',
+    margin: "5%",
+    borderRadius: 10,
     flexDirection: 'column',
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
