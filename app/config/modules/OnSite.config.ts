@@ -4,7 +4,7 @@ export const OnSiteConfig: any = {
     moduleID: "onSite",
     title: "screen-title-onsite",
     updateable: true,
-    notificationEnabled: true,
+    notificationEnabled: false,
     dataType: "XML",
     tables: [
         {

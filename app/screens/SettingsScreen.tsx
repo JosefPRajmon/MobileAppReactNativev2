@@ -44,32 +44,41 @@ export default function SettingsScreen({ navigation }: any) {
     <View style={styles.prim}>
     <ScrollView scrollIndicatorInsets={{ right: 1 }}>
       <View style={styles.container}>
-        {AppConfig.enableNotifications && (
-          <View>
-            <View style={styles.title}>
-              <Text style={AppStyles.detailItemTitle}>Nofifikace</Text>
-            </View>
-            {Object.entries(modules).map(([moduleID, value]: any) => (
-              <ListItem
-                key={moduleID}
-                style={styles.item}
-                onPress={() => toggleNotifidationEnable(moduleID)}
-              >
-                <CheckBox
-                  checked={value.enable}
-                  color={Colors.checkbox}
-                  onPress={() => toggleNotifidationEnable(moduleID)}
-                />
-                <Body>
-                  <Text>
-                    {translate.get(AppModules[moduleID].config.title)}
-                  </Text>
-                </Body>
-              </ListItem>
-            ))}
-          </View>
-        )}
-        <DetailItem
+        {//AppConfig.enableNotifications && (
+  <View>
+  <View style={styles.title}>
+    <Text style={AppStyles.detailItemTitle}>Notifikace</Text>
+  </View>
+  {Object.entries(modules).map(([moduleID, value]: any) => {
+    if (moduleID === "onSite") {
+      return null;
+    }
+    return (
+      <ListItem
+        key={moduleID}
+        style={styles.item}
+        onPress={() => toggleNotifidationEnable(moduleID)}
+      >
+        <CheckBox
+          checked={value.enable}
+          color={Colors.checkbox}
+          onPress={() => toggleNotifidationEnable(moduleID)}
+        />
+        <Body>
+          <Text>
+            {translate.get(AppModules[moduleID].config.title)}
+          </Text>
+        </Body>
+      </ListItem>
+    );
+  })}
+</View>
+//)
+}
+
+        { Object.entries(modules).some(([moduleID, value]: any) => value.enable) && (
+          <View style={{margin: 0, padding: 0,width:"100%", height: "100%"}}>
+            <DetailItem
           title={'Upozornění v okolí'}
           data='Zvolte na mapě umístění, budete dostávat notifikace jen v jeho okolí.'
         />
@@ -99,6 +108,8 @@ export default function SettingsScreen({ navigation }: any) {
             />
           </View>
         </TouchableOpacity>
+            </View>
+        )}
         {/* <MainButton
           text={"Uložit nastavení"}
           iconType="MaterialCommunityIcons"

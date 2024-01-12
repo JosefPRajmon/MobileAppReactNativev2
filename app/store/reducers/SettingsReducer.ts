@@ -16,6 +16,7 @@ function initModules() {
   };
 
   Object.entries(AppModules).map(([moduleID, module]: any) => {
+    //console.log("test noti: " +moduleID)
     if (module.config.notificationEnabled) {
       state.modules[moduleID] = {
         enable: true

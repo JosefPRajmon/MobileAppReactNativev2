@@ -5,6 +5,7 @@
 /.vs
 /node_modules
 /package-lock.json
+/yarn.lock
 /litovel/.vscode
 /.expo
 /android
