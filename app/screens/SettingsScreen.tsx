@@ -39,44 +39,45 @@ export default function SettingsScreen({ navigation }: any) {
       }
     });
   };
+  let kopiePole = Object.entries(modules);
+  kopiePole = kopiePole.filter(([moduleID, value]) => moduleID !== "onSide");
+  kopiePole = kopiePole.filter(([moduleID, value]) => moduleID !== "reports");
+  kopiePole = kopiePole.filter(([moduleID, value]) => moduleID !== "setting");
+  kopiePole = kopiePole.filter(([moduleID, value]) => moduleID !== "aboutApp");
+  kopiePole = kopiePole.filter(([moduleID, value]) => moduleID !== "test2");
 
   return (
     <View style={styles.prim}>
     <ScrollView scrollIndicatorInsets={{ right: 1 }}>
       <View style={styles.container}>
         {//AppConfig.enableNotifications && (
-  <View>
-  <View style={styles.title}>
-    <Text style={AppStyles.detailItemTitle}>Notifikace</Text>
-  </View>
-  {Object.entries(modules).map(([moduleID, value]: any) => {
-    if (moduleID === "onSite") {
-      return null;
-    }
-    return (
-      <ListItem
-        key={moduleID}
-        style={styles.item}
-        onPress={() => toggleNotifidationEnable(moduleID)}
-      >
-        <CheckBox
-          checked={value.enable}
-          color={Colors.checkbox}
-          onPress={() => toggleNotifidationEnable(moduleID)}
-        />
-        <Body>
-          <Text>
-            {translate.get(AppModules[moduleID].config.title)}
-          </Text>
-        </Body>
-      </ListItem>
-    );
-  })}
-</View>
-//)
-}
+          <View>
+            <View style={styles.title}>
+              <Text style={AppStyles.detailItemTitle}>Notifikace</Text>
+            </View>
+            {Object.entries(modules).map(([moduleID, value]: any) => (
+              <ListItem
+                key={moduleID}
+                style={styles.item}
+                onPress={() => toggleNotifidationEnable(moduleID)}
+              >
+                <CheckBox
+                  checked={!value.enable}
+                  color={Colors.checkbox}
+                  onPress={() => toggleNotifidationEnable(moduleID)}
+                />
+                <Body>
+                  <Text>
+                    {translate.get(AppModules[moduleID].config.title)}
+                  </Text>
+                </Body>
+              </ListItem>
+            ))}
+          </View>
+        //)
+      }
 
-        { Object.entries(modules).some(([moduleID, value]: any) => value.enable) && (
+ { /*Object.entries(modules)*/kopiePole.some(([moduleID, value]: any) => !value.enable) && (
           <View style={{margin: 0, padding: 0,width:"100%", height: "100%"}}>
             <DetailItem
           title={'Upozornění v okolí'}

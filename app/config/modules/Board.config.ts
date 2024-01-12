@@ -4,7 +4,7 @@ export const BoardConfig: any = {
     moduleID: "board",
     title: "screen-title-board",
     updateable: true,
-    notificationEnabled: false,
+    notificationEnabled: true,
     icon: {
         name: "official-board"
     },

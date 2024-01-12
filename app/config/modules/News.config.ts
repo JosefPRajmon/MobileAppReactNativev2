@@ -4,7 +4,7 @@ export const NewsConfig: any = {
     moduleID: "news",
     title: "screen-title-news",
     updateable: true,
-    notificationEnabled: false,
+    notificationEnabled: true,
     dataType: "XML",
     tables: [
         {

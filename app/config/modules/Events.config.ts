@@ -4,7 +4,7 @@ export const EventsConfig: any = {
     moduleID: "events",
     title: "screen-title-events",
     updateable: true,
-    notificationEnabled: false,
+    notificationEnabled: true,
     dataType: "JSON",
     icon: {
         name: "events"

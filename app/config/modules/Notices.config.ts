@@ -4,7 +4,7 @@ export const NoticesConfig: any = {
   moduleID: "notices",
   title: "screen-title-notices",
   updateable: true,
-  notificationEnabled: false,
+  notificationEnabled: true,
   icon: {
     name: "notifications-map"
   },
