@@ -1,5 +1,6 @@
 import { remove } from "lodash";
 import React from "react";
+import {AppConfig} from "../config/App.config";
 import { Alert } from "react-native";
 import Svg, { G, Path, Polygon, Rect, Polyline } from "react-native-svg";
 import NewsComponent from "../components/svg-componets/News";
@@ -14,6 +15,7 @@ import FiltrComponent from "../components/svg-componets/Filtr";
 import AbecComponent from "../components/svg-componets/Abc";
 import OdborComponent from "../components/svg-componets/Odbors";
 import OptionComponent from "../components/svg-componets/Option";
+import TrashComponent from "../components/svg-componets/Trash";
 import { Ionicons } from "@expo/vector-icons";
 import Colors from "./Colors";
 import Metrics from "./Metrics";
@@ -1223,9 +1225,17 @@ export const IconsLoader = ({ page, type, style = { width: '100%', height: '100%
         case "contacts": return (
             <ContaksComponent height={style.height} width={style.width} margin={style.margin} />
         );
-        case "notices": return (
-            <NoticesComponent height={style.height} width={style.width} margin={style.margin} />
-        );
+        case "notices": 
+          if(AppConfig.appID =='cz.as4u.mmvm.litovel'){
+            return (
+              <TrashComponent height={style.height} width={style.width} margin={style.margin} />
+          );
+          }else{
+            return (
+              <NoticesComponent height={style.height} width={style.width} margin={style.margin} />
+          );
+          }
+
         case "reports": return (
             <ReportsComponent height={style.height} width={style.width} margin={style.margin} />
         );

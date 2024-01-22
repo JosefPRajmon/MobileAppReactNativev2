@@ -2,7 +2,8 @@ import moment from "moment";
 
 export const NoticesConfig: any = {
   moduleID: "notices",
-  title: "screen-title-notices",
+  title: "screen-title-trash",
+  //title: "screen-title-notices",
   updateable: true,
   notificationEnabled: true,
   icon: {
